@@ -4,10 +4,9 @@ De Formação Tecnológica.
 Organização: Sicoob Credip  e Dotum.
 
 Ferramentas utilizadas: 
-* Vue 3 + TypeScript + Vite
-* (banco de dados)
-* mais
+* Editor de código: Visual Studio Code
 
 Responsáveis pelo projeto:
+* Everton Felipe Rodrigues Silva;
 * Hamábily A. dos Santos;
-* 
+* Murilo Enzo de Lima Cardoso;
