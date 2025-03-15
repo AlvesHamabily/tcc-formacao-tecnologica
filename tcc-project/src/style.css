@@ -267,40 +267,42 @@ img:nth-child(5) {
 .social .texto_descricao{
     width: 100%;
 }
-.social .lista_redes{
-    background-color: var(--verde-agua);
-    color: var(--branco);
+.lista_redes {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.lista_redes button {
+    background: var(--verde-agua);
+    color: var(--verde-escuro);
     border: none;
     border-radius: 6px;
-    width: 100px;
+    width: 120px;
     height: 40px;
     font-weight: bold;
     font-size: 16px;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
 }
+
+
+.lista_redes button:hover {
+    background: var(--verde);
+    color: var(--branco);
+    transform: scale(1.1);
+}
+
 .lista_redes button:focus {
     outline: 3px solid var(--amarelo);
-    outline-offset: 2px;
 }
-.lista_redes a {
-    display:flex;
-    margin: 5px;
-    gap: 10px; 
-    list-style: none; 
-    padding: 0;
-    margin: 0;
-}
-.social .lista_redes button:hover{
-    color: var(--verde-agua); 
-    background-color:var(--branco);
-    width: auto;
-} 
 
 @media (max-width: 600px) {
-    .lista_redes button {
-        width: 90%;
+    .lista_redes {
+        flex-direction: column;
+        align-items: center;
     }
 }
 button{
@@ -309,4 +311,10 @@ button{
     width: 80px;
     height: 30px;
     font: bold;
+}
+
+.img_perfil{
+    width: 20px;
+    position:static;
+    margin-right: 10px;
 }
