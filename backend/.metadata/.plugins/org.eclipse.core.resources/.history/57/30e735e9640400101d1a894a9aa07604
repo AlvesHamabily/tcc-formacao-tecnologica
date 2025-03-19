@@ -1,0 +1,112 @@
+package com.financialeducation.model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+public class ProdutoDao {
+
+	public void insert(Connection conn, ProdutoBean proBean) throws SQLException {
+		String sql = "insert into produto (nome, codigo, precoCusto, precoVenda) values (?, ?, ?, ?)";
+		
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, proBean.getNome());
+		ps.setString(2, proBean.getCodigo());
+		ps.setDouble(3, proBean.getPrecoCusto());
+		ps.setDouble(4, proBean.getPrecoVenda());
+		//ps.setDate(5, proBean.getDataCadastro());
+		ps.execute();
+		
+		ps.close();		
+	}
+	
+	public void update(Connection conn, ProdutoBean proBean) throws SQLException {
+		String sql = "update produto set nome = ?, codigo = ?, precoCusto = ?, precoVenda = ? where id = ?";
+		
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, proBean.getNome());
+		ps.setString(2, proBean.getCodigo());
+		ps.setDouble(3, proBean.getPrecoCusto());
+		ps.setDouble(4, proBean.getPrecoVenda());
+		ps.setInt(5, proBean.getId());
+		ps.execute();
+		
+		ps.close();		
+
+	}
+	
+	public void delete(Connection conn, Integer id) throws SQLException {
+		String sql = "delete from produto where id = ?";
+		
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, id);
+		ps.execute();
+		
+		ps.close();		
+
+	}
+	
+	public ProdutoBean selectPorId(Connection conn, Integer id) throws Exception {
+		String sql = "select * from produto where id = ?";
+		
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, id);
+		ResultSet rs = ps.executeQuery();
+		
+		ProdutoBean p = new ProdutoBean();
+		while (rs.next()) {
+			
+			p.setId( rs.getInt("id") );
+			p.setNome( rs.getString("nome") );
+			p.setCodigo( rs.getString("codigo") );
+			p.setPrecoCusto( rs.getDouble("precoCusto") );
+			p.setPrecoVenda( rs.getDouble("precoVenda") );
+//			p.setDataCadastro( rs.getDate("dataCadastro") );
+		}
+		
+		rs.close();
+		ps.close();		
+
+		if (p.getId() == null)
+			throw new Exception("Nao achei o produto com o ID " + id);
+
+		
+		return p;
+	}
+	
+	public List<ProdutoBean> selectTodos(Connection conn) throws Exception {
+		String sql = "select * from produto order by id";
+		
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		
+		List<ProdutoBean> result = new ArrayList<ProdutoBean>();
+		while (rs.next()) {
+			ProdutoBean p = new ProdutoBean();
+			
+			p.setId( rs.getInt("id") );
+			p.setNome( rs.getString("nome") );
+			p.setCodigo( rs.getString("codigo") );
+			p.setPrecoCusto( rs.getDouble("precoCusto") );
+			p.setPrecoVenda( rs.getDouble("precoVenda") );
+			
+//			java.sql.Date dataDB = rs.getDate("dataCadastro");
+//			if (dataDB != null) {
+//				Date dataJava = new Date( dataDB.getTime() );
+//				p.setDataCadastro( dataJava );
+//			}
+			
+			result.add(p);
+		}
+		
+		
+		rs.close();
+		ps.close();		
+
+		return result;
+	}
+}

@@ -1,0 +1,192 @@
+package view;
+
+import java.util.List;
+
+import model.ProdutoBean;
+
+public class ProdutoView {
+
+	public static final String PL = "\n";
+	
+    private String escapeHtml(String input) {
+        return input.replace("á", "&aacute;")
+			        .replace("é", "&eacute;")
+			        .replace("í", "&iacute;")
+			        .replace("ó", "&oacute;")
+			        .replace("ú", "&uacute;")
+			        .replace("ã", "&atilde;")
+			        .replace("õ", "&otilde;")
+			        .replace("â", "&acirc;")
+			        .replace("ê", "&ecirc;")
+			        .replace("î", "&icirc;")
+			        .replace("ô", "&ocirc;")
+			        .replace("û", "&ucirc;")
+			        .replace("ç", "&ccedil;")
+			        .replace("Á", "&Aacute;")
+			        .replace("É", "&Eacute;")
+			        .replace("Í", "&Iacute;")
+			        .replace("Ó", "&Oacute;")
+			        .replace("Ú", "&Uacute;")
+			        .replace("Ã", "&Atilde;")
+			        .replace("Õ", "&Otilde;")
+			        .replace("Â", "&Acirc;")
+			        .replace("Ê", "&Ecirc;")
+			        .replace("Î", "&Icirc;")
+			        .replace("Ô", "&Ocirc;")
+			        .replace("Û", "&Ucirc;")
+			        .replace("Ç", "&Ccedil;");
+}
+
+    
+
+	public String criarHtmlCabeca() {
+		StringBuilder sb = new StringBuilder();
+
+		sb.append("<html>" + PL);
+		sb.append("	 <head>" + PL);
+		sb.append("    <title>Produtos</title>" + PL);
+		sb.append("    <style>" + PL);
+		sb.append("* {font-family: arial;}" + PL);
+		sb.append("fieldset {background-color: #eeeeee;}" + PL);
+		sb.append("legend, th {background-color: gray; color: white; padding: 5px 10px;}" + PL);
+		sb.append("imput {display: block;}" + PL);
+		sb.append("table {width: 100%; border-collapse: collapse;}" + PL);
+		sb.append("td, th{ padding: 6px; border: 1px dotted #000;}" + PL);
+		sb.append("a {display: block; width: 100px; padding: 6px; border: 1px solid #000; background: #ccc; margin: 10px;}" + PL);
+		sb.append("    </style>" + PL);
+		sb.append("	 </head>" + PL);
+		sb.append("<body>" + PL);
+
+		return escapeHtml(sb.toString());
+
+	}
+
+	public String criarHtmlFormulario(String acao, ProdutoBean proBean) {
+
+		String nome = "";
+		if (proBean != null && proBean.getNome() != null) {
+			nome = proBean.getNome();
+		}
+
+		String codigo = "";
+		if (proBean != null && proBean.getCodigo() != null) {
+			codigo = proBean.getCodigo();
+		}
+
+		String precoCustoStr = "";
+		if (proBean != null && proBean.getPrecoCusto() != null) {
+			precoCustoStr = "" + proBean.getPrecoCusto();
+		}
+
+		String precoVendaStr = "";
+		if (proBean != null && proBean.getPrecoVenda() != null) {
+			precoVendaStr = "" + proBean.getPrecoVenda();
+		}
+
+		StringBuilder sb = new StringBuilder();
+		sb.append("    <form onsubmit=\"return confirmarExclusao()\" action=\"./produto\" method=\"post\">" + PL);
+		sb.append("<fieldset> <legend>Cadastro de produtos: </legend>" + PL);
+		sb.append("    <label id=\"nome\" > Nome </label>" + PL);
+		if (acao.equals("formAlterarSalvar")) {
+			sb.append("<input type=\"hidden\" name=\"id\" value=\"" + proBean.getId() + "\">" + PL);
+		}
+
+		sb.append("     <input type=\"hidden\" name=\"acao\" value=\"" + acao + "\">" + PL);
+		sb.append("    	<label>Nome:</label>" + PL);
+		sb.append("     <input type=\"text\" name=\"nome\" value=\"" + nome + "\" placeholder=\"Nome do Produto\">" + PL);
+		
+		sb.append("    	<label>Código:</label>" + PL);
+		sb.append("     <input type=\"text\" name=\"codigo\" value=\"" + codigo + "\" placeholder=\"Código do produto\" >" + PL);
+		
+		sb.append("    	<label>Preço de de Custo:</label>" + PL);
+		sb.append("		<input type=\"number\" step=\".01\" name=\"precoc\" value=\"" + precoCustoStr + "\" placeholder=\"Preço de Custo\" >" + PL);
+		
+		sb.append("    	<label> Preço de Venda:</label>" + PL);
+		sb.append("     <input type=\"number\" step=\".01\" name=\"precov\" value=\"" + precoVendaStr + "\" placeholder=\"Preço de Venda\" >" + PL);
+		
+		sb.append("     <br>" + PL);
+		sb.append("     <input type=\"submit\" value=\"Cadastrar\">" + PL);
+		
+		sb.append("</fieldset>" + PL);
+		sb.append("    </form>" + PL);
+		
+		if (acao.equals("formDelete")) {
+		sb.append("<script>" + PL);
+		sb.append("    function confirmarExclusao() {" + PL);
+		sb.append("        return confirm(\"Tem certeza que deseja excluir?\");" + PL);
+		sb.append("    }" + PL);
+		sb.append("</script>" + PL);
+		}
+
+		return escapeHtml(sb.toString());
+	}
+
+	public String criarHtmlTabela(List<ProdutoBean> proList) {
+		StringBuilder sb = new StringBuilder();
+
+		sb.append("<table>" + PL);
+		sb.append("			<tr>" + PL);
+		sb.append("				<th>Nome</th>" + PL);
+		sb.append("				<th>Código</th>" + PL);
+		sb.append("				<th>Preço de Custo</th>" + PL);
+		sb.append("				<th>Preço de Venda</th>" + PL);
+		sb.append("				<th colspan=\"2\">Ação</th>" + PL);
+		sb.append("			</tr>" + PL);
+
+		for (ProdutoBean proBean : proList) {
+			sb.append("			<tr>" + PL);
+			sb.append("				<td>" + proBean.getNome() + "</td>" + PL);
+			sb.append("				<td>" + proBean.getCodigo() + "</td>" + PL);
+			sb.append("				<td>" + proBean.getPrecoCusto() + "</td>" + PL);
+			sb.append("				<td>" + proBean.getPrecoVenda() + "</td>" + PL);
+			sb.append("				<td>" + criarHtmlBotaoAlterar(proBean.getId()) + "</td>" + PL);
+			sb.append("				<td>" + criarHtmlBotaoExcluir(proBean.getId()) + "</td>" + PL);
+			sb.append("			</tr>" + PL);
+		}
+
+		sb.append("</table>" + PL);
+
+		return escapeHtml(sb.toString());
+	}
+
+	public String criarHtmlSucesso() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Deu tudo Certo");
+
+		return escapeHtml(sb.toString());
+	}
+
+	public String criarHtmlErro() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Deu tudo errado");
+
+		return escapeHtml(sb.toString());
+	}
+
+	public String criarHtmlBotaoInserir() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("<a href=\" ./produto?acao=formInserir\"> Inserir </a>");
+		return escapeHtml(sb.toString());
+	}
+
+	public String criarHtmlBotaoAlterar(Integer id) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("<a href=\" ./produto?acao=formAlterar&id=" + id + "\"> Alterar </a>");
+		return escapeHtml(sb.toString());
+	}
+
+	public String criarHtmlBotaoExcluir(Integer id) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("<a href=\" ./produto?acao=formDelete&id=" + id + "\"> Deletar </a>");
+		return escapeHtml(sb.toString());
+	}
+
+	public String criarHtmlPe() {
+		StringBuilder sb = new StringBuilder();
+
+		sb.append("  </body>" + PL);
+		sb.append("</html>" + PL);
+
+		return escapeHtml(sb.toString());
+	}
+}

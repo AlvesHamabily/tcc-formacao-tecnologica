@@ -1,0 +1,115 @@
+package com.financialeducation.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+import com.financialeducation.model.ProdutoBean;
+
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import view.ProdutoView;
+
+@WebServlet("/produto")
+
+public class ProdutoServLet extends HttpServlet {
+
+	protected void doExecute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    	PrintWriter pw = response.getWriter();
+    	
+    	ProdutoView pv = new ProdutoView();
+    	ProdutoController pc = new ProdutoController();
+    	
+    	String acao = request.getParameter("acao");
+    	try {
+    		pw.append(pv.criarHtmlCabeca());
+    		
+    		if (acao == null) { 
+    			List<ProdutoBean> proList = pc.buscaTodosProdutos(); 
+    			String html = pv.criarHtmlTabela(proList); 
+    			pw.append(html); 
+    			html = pv.criarHtmlBotaoInserir(); 
+    			pw.append(html); 
+    			
+    		} else if (acao.equals("formInserir")) { 
+    			String html = pv.criarHtmlFormulario("formInserirSalvar", null); 
+    			pw.append(html); 
+    			
+    		}else if (acao.equals("formInserirSalvar")) {
+    			String nome = request.getParameter("nome");
+    			String codigo = request.getParameter("codigo");
+    			String precoc = request.getParameter("precoc");
+    			String precov = request.getParameter("precov");
+    			
+    			pc.inserirProduto(nome, codigo, precoc, precov);
+    			
+    			String html = pv.criarHtmlSucesso();
+    			pw.append(html);
+    			
+    			List<ProdutoBean> proList = pc.buscaTodosProdutos();
+    			html = pv.criarHtmlTabela(proList);
+    			pw.append(html);
+    			html = pv.criarHtmlBotaoInserir();
+    			pw.append(html);
+    			
+    		} else if (acao.equals("formAlterar")) {
+    			String id = request.getParameter("id");
+    			
+    			ProdutoBean proBean = pc.buscaPorId(id);
+    			
+    			String html = pv.criarHtmlFormulario("formAlterarSalvar", proBean);
+    			pw.append(html);
+    			
+    		} else if(acao.equals("formAlterarSalvar")){
+    			
+    			String id = request.getParameter("id");
+    			String nome = request.getParameter("nome");
+    			String codigo = request.getParameter("codigo");
+    			String precoc = request.getParameter("precoc");
+    			String precov = request.getParameter("precov");
+    			
+    			pc.alterarProduto(id, nome, codigo, precoc, precov);
+    			
+    			String html = pv.criarHtmlSucesso();
+    			pw.append(html);
+    			
+    			List<ProdutoBean> proList = pc.buscaTodosProdutos();
+    			html = pv.criarHtmlTabela(proList);
+    			pw.append(html);
+    			html = pv.criarHtmlBotaoInserir(); 
+    			pw.append(html);
+    			
+    		} else if(acao.equals("formDelete")){
+    			
+    			String id = request.getParameter("id");
+    			
+    			pc.apagarProduto(id);
+    			
+    			String html = pv.criarHtmlSucesso();
+    			pw.append(html);
+
+    			List<ProdutoBean> proList = pc.buscaTodosProdutos();
+    			html = pv.criarHtmlTabela(proList);
+    			pw.append(html);
+    			html = pv.criarHtmlBotaoInserir(); 
+    			pw.append(html);
+    		} 
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    	
+    	pw.append(pv.criarHtmlPe());
+    	pw.flush();
+    }
+	
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		doExecute(request,response);
+	}
+	
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		doExecute(request,response);
+	}
+
+}

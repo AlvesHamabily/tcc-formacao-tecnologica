@@ -1,0 +1,53 @@
+package com.financialeducation.model;
+
+import java.util.Date;
+
+public class ProdutoBean {
+
+	private Integer id;
+	private String nome;
+	private String codigo;
+	private Double precoCusto;
+	private Double precoVenda;
+	private Date dataCadastro;
+	
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public String getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+	public Double getPrecoCusto() {
+		return precoCusto;
+	}
+	public void setPrecoCusto(Double precoCusto) {
+		this.precoCusto = precoCusto;
+	}
+	public Double getPrecoVenda() {
+		return precoVenda;
+	}
+	public void setPrecoVenda(Double precoVenda) {
+		this.precoVenda = precoVenda;
+	}
+	public Date getDataCadastro() {
+		return dataCadastro;
+	}
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+	
+	
+}

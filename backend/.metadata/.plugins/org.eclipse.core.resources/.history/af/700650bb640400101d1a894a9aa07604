@@ -1,0 +1,20 @@
+package model;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class Conexao {
+
+	public Connection conecta() throws Exception {
+		String user = "postgres";
+		String password = "banco";
+
+		Class.forName("org.postgresql.Driver");
+		String url = "jdbc:postgresql://localhost:3113/postgres";
+		Connection conn = DriverManager.getConnection(url, user, password);
+		conn.setAutoCommit(false);
+
+		return conn;
+	}
+
+}

@@ -1,0 +1,29 @@
+# Eclipse
+.settings/
+.project
+.classpath
+
+# Maven
+target/
+*.jar
+*.war
+*.ear
+mvnw
+mvnw.cmd
+
+# IDEs e ambientes locais
+.idea/
+.vscode/
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Configurações do servidor
+*.log
+logs/
+
+# Credenciais e configurações sensíveis
+src/main/resources/application.properties
+src/main/resources/application.yml
+*.env
