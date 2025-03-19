@@ -1,0 +1,87 @@
+package controller;
+
+import java.sql.Connection;
+import java.util.Date;
+import java.util.List;
+
+import com.financialeducation.model.Conexao;
+import com.financialeducation.model.ProdutoBean;
+import com.financialeducation.model.ProdutoDao;
+
+public class ProdutoController {
+
+	public void inserirProduto(String nome, String codigo, String precoCusto, String precoVenda) throws Exception {
+		
+		Conexao c = new Conexao();
+		Connection conn = c.conecta();
+		
+		ProdutoBean p = new ProdutoBean();
+		p.setNome(nome);
+		p.setCodigo(codigo);
+		p.setPrecoCusto(Double.parseDouble(precoCusto));
+		p.setPrecoVenda(Double.parseDouble(precoVenda));
+		p.setDataCadastro(new Date());
+		
+		ProdutoDao dao = new ProdutoDao();
+		dao.insert(conn, p);
+		
+		
+		conn.commit();
+		
+	}
+	
+	public void alterarProduto(String id, String nome, String codigo, String precoCusto, String precoVenda) throws Exception {
+		
+		// faz conexao
+		Conexao c = new Conexao();
+		Connection conn = c.conecta();
+		
+		ProdutoDao dao = new ProdutoDao();	
+		ProdutoBean p = dao.selectPorId(conn, Integer.parseInt(id));
+
+		p.setNome(nome);
+		p.setCodigo(codigo);
+		p.setPrecoCusto(Double.parseDouble(precoCusto));
+		p.setPrecoVenda(Double.parseDouble(precoVenda));
+		
+		dao.update(conn, p);
+		
+		conn.commit();
+	}
+	
+	public void apagarProduto(String idStr) throws Exception {
+		Conexao c = new Conexao();
+		Connection conn = c.conecta();
+		
+		Integer id = Integer.parseInt(idStr);
+
+		ProdutoDao dao = new ProdutoDao();
+		dao.delete(conn, id);
+		
+		conn.commit();
+	}
+
+	public ProdutoBean buscaPorId(String idStr) throws Exception {
+		Conexao c = new Conexao();
+		Connection conn = c.conecta();
+		
+		Integer id = Integer.parseInt(idStr);
+		
+		ProdutoDao dao = new ProdutoDao();
+		ProdutoBean proBean = dao.selectPorId(conn, id);
+		
+		return proBean;
+	}
+	
+	public List<ProdutoBean> buscaTodosProdutos() throws Exception {
+		Conexao c = new Conexao();
+		Connection conn = c.conecta();
+
+		
+		ProdutoDao dao = new ProdutoDao();
+		List<ProdutoBean> proList = dao.selectTodos(conn);
+		
+		return proList;
+	}
+	
+}

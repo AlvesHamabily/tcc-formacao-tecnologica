@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete element from project &apos;estoque&apos;&#x0D;&#x0A;- Original project: &apos;estoque&apos;&#x0D;&#x0A;- Original element: &apos;estoque/src/main/java/site.estoque.resources&apos;" description="Delete element" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;site.estoque.resources" element2="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;site.estoque" element3="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;site" elements="3" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1742177070844" subPackages="false" version="1.0"/>
+</session>
