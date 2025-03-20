@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import org.mindrot.jbcrypt.*;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -21,8 +22,9 @@ public class RegisterServlet extends HttpServlet {
 
         try (Connection con = com.financialeducation.model.Conexao.getConnection()) {
             PreparedStatement ps = con.prepareStatement("INSERT INTO users (username, password) VALUES (?, ?)");
+            String hash = "senha";
             ps.setString(1, username);
-            ps.setString(2, password);
+            ps.setString(2, BCrypt.hashpw(password, BCrypt.gensalt(12)));
             ps.executeUpdate();
             
             response.sendRedirect("index.jsp?register=success");
