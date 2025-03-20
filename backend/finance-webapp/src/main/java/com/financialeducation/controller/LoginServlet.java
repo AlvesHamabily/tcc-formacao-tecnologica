@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import org.mindrot.jbcrypt.*;
 
 import com.financialeducation.model.Conexao;
 
@@ -17,23 +18,28 @@ import jakarta.servlet.http.HttpSession;
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
+//inserir verificação aqui
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         
         try (Connection con = Conexao.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM users WHERE username=? AND password=?");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM users WHERE username=?");
             ps.setString(1, username);
-            ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
             
             if (rs.next()) {
-                HttpSession session = request.getSession();
-                session.setAttribute("username", username);
-                response.sendRedirect("logado.jsp");
-            } else {
-                response.sendRedirect("index.jsp?error=1");
+                
+                String passwordHash = rs.getString("password");
+            
+            
+	            if (BCrypt.checkpw(password, passwordHash)) {
+	                HttpSession session = request.getSession();
+	                session.setAttribute("username", username);
+	                response.sendRedirect("logado.jsp");
+	            } else {
+	                response.sendRedirect("index.jsp?error=1");
+	            }
             }
         } catch (Exception e) {
             e.printStackTrace();

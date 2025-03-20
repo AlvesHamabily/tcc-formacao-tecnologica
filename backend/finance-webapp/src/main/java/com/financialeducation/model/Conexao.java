@@ -7,9 +7,11 @@ import java.sql.SQLException;
 public class Conexao {
 	//Lembrar de alterar as informações ${}
 	
-    private static final String URL = "jdbc:postgresql://localhost:5432/${DATABASE}";
-    private static final String USER = "${USER}";
-    private static final String PASSWORD = "${PASS}";
+//    private static final String URL = "jdbc:postgresql://localhost:5432/${DATABASE}";
+//    private static final String USER = "${USER}";
+//    private static final String PASSWORD = "${PASS}";
+	
+
 
     public static Connection getConnection() throws SQLException {
         try {
