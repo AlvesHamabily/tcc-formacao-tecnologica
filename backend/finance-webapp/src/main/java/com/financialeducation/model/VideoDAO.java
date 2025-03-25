@@ -26,6 +26,9 @@ public class VideoDAO {
                 video.setUrl(rs.getString("url"));
                 videos.add(video);
             }
+            
+            
+            
         } catch (SQLException e) {
             e.printStackTrace();
         }
