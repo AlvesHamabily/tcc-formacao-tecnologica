@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso - Sicoob</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Sicoob Instituto - Curso</h1>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Aulas</h2>
+            <ul id="videoList"></ul>
+        </div>
+
+        <div class="video-section">
+            <h2 id="videoTitle">Nenhum vídeo disponível</h2>
+            <div class="video-container">
+                <iframe id="videoFrame" width="800" height="450" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="controls">
+                <button onclick="navigate('prev')">Retornar</button>
+                <button onclick="navigate('next')">Avançar</button>
+            </div>
+        </div>
+    </div>
+    <a href="index.html">Home</a>
+    <script src="js/videos.js"></script>
+</body>
+</html>
