@@ -12,5 +12,6 @@
 <form action="PontosServlet" method="post">
     <button type="submit">Ganhar Pontos</button>
 </form>
-
+<a href="videos">curso</a>
+<a href="professores.jsp">Area dos professores</a>
 <a href="index.jsp">Sair</a>
