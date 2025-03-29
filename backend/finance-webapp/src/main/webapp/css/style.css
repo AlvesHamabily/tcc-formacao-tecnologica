@@ -26,7 +26,6 @@ p{
     margin-bottom: 15px;
 }
 
-
 :root {
     --verde-agua: #00ae9d;
     --branco: #ffffff;
@@ -166,8 +165,13 @@ nav a:hover{
     text-align: justify;
 }
 .grupos .texto_descricao {
+    text-align: justify;
+}
+.grupos .texto_descricao h4{
+    color: var(--verde-escuro);
     text-align: center;
 }
+
 .grupos .texto_titulo {
     margin-bottom: 100px;
     color: var(--verde-escuro);
@@ -176,7 +180,7 @@ nav a:hover{
 
 .educacao_financeira .texto_descricao{
     margin: 40px 100px;
-    text-align: center;
+    text-align: justify;
 
 }
 
