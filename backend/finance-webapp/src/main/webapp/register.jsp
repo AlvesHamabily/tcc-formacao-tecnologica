@@ -10,6 +10,6 @@
         Senha: <input type="password" name="password" required><br>
         <input type="submit" value="Cadastrar">
     </form>
-    <p>Já tem uma conta? <a href="index.jsp">Faça login</a></p>
+    <p>Já tem uma conta? <a href="./login.html">Faça login</a></p>
 </body>
 </html>

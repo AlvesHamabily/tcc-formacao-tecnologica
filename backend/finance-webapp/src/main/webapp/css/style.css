@@ -17,12 +17,14 @@ body{
     text-align:center;
     min-height: 100%;
     width: auto;
+
+    display: flex;
+    flex-direction: column;
 }
 
 p{
     margin-bottom: 15px;
 }
-
 
 
 :root {
@@ -134,7 +136,6 @@ nav a:hover{
 .texto_titulo{
     margin-bottom: 30px;
     color: var(--verde-escuro);
-    font-weight: 700;
     font-size: 30px;
 }
 
@@ -162,15 +163,21 @@ nav a:hover{
 .grupos .conteudo_texto{
     text-align: center;
     padding:8px;
+    text-align: justify;
 }
-
-.grupos .texto_titulo{
+.grupos .texto_descricao {
+    text-align: center;
+}
+.grupos .texto_titulo {
     margin-bottom: 100px;
     color: var(--verde-escuro);
+    text-align: center;
 }
 
 .educacao_financeira .texto_descricao{
-    margin: 40px;
+    margin: 40px 100px;
+    text-align: center;
+
 }
 
 .lista_grupos{
@@ -253,9 +260,13 @@ img:nth-child(5) {
 
 .social {
     margin-top: 10px;
-    background-color:var(--verde-agua);
-    height: 100px;
+    background-color: var(--verde-agua);
+    min-height: 100px;
+    padding: 10px; 
+
+
 }
+
 
 .social .conteudo_texto{
     color: var(--branco);
@@ -311,10 +322,117 @@ img:nth-child(5) {
         align-items: center;
     }
 }
+
 button{
     border: 0;
     border-radius: 4px;
     width: 80px;
     height: 30px;
     font: bold;
+}
+
+/* finanças */
+.iniciar{
+    background-color: var(--amarelo);
+    color: var(--verde-escuro);
+    margin-top: 5px;
+    border: 0;
+    border-radius: 4px;
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+    font: bolder;
+}
+
+.btn-iniciar button:hover{
+    background: var(--verde-agua);
+    color: var(--branco);
+    transform: scale(1.1);
+}
+
+/* login  */
+.login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login .texto_titulo{
+    font-weight: bold;
+}
+.q-card {
+    background-color: var(--branco);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 1000px; 
+    width: 95%;
+    text-align: center;
+    align-items: center;
+    margin-inline: 20px;
+}
+
+.q-card-section {
+    padding: 25px;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    gap: 12px;
+    width: 100%; 
+}
+
+label {
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    color: var(--verde-escuro);
+}
+
+input {
+    width: 80%; 
+    padding: 10px;
+    border: 1px solid var(--verde-escuro);
+    border-radius: 5px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: var(--verde-agua);
+    box-shadow: 0 0 5px var(--verde-agua);
+}
+
+.btn-login {
+    background-color: var(--verde);
+    color: var(--branco);
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    margin: 6px;
+    width: 85%;
+}
+
+.btn-login:hover {
+    background-color: var(--verde-escuro);
+}
+
+/* Cadastro */ 
+.cadastro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100vh;
+    max-width: none;
+    width: 90vw;
+}
+
+.cadastro .q-card {
+    width: 90vh;
+    margin: auto;
+    position: relative;
 }

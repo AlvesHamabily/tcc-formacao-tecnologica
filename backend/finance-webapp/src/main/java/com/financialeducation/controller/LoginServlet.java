@@ -20,21 +20,23 @@ public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 //inserir verificação aqui
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username = request.getParameter("username");
+        String email = request.getParameter("email");
         String password = request.getParameter("password");
         
         try (Connection con = Conexao.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM users WHERE username=?");
-            ps.setString(1, username);
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM users WHERE email=?");
+            ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
             
             if (rs.next()) {
                 
                 String passwordHash = rs.getString("password");
+                String username = rs.getString("username");
             
             
 	            if (BCrypt.checkpw(password, passwordHash)) {
 	                HttpSession session = request.getSession();
+	                session.setAttribute("email", email);
 	                session.setAttribute("username", username);
 	                response.sendRedirect("logado.jsp");
 	            } else {
