@@ -7,7 +7,7 @@
 
 <p>Seus pontos: <%= points %></p>
 
-<p>Nível: <%= nivel %></p>
+<p>NÃ­vel: <%= nivel %></p>
 
 <form action="PontosServlet" method="post">
     <button type="submit">Ganhar Pontos</button>

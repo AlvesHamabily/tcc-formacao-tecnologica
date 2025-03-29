@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <nav class="navebar">
+        <div class="max-width">
+            <div class="titulo">Acesse sua Conta</div> 
+            <div class="lista">
+                <ul>
+                    <a href="index.html">Início</a>
+                    <a href="login.html">Login</a>
+                    <a href="./cadastro.html">Cadastro</a>
+                </ul> 
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="login">
+            <div class="max-width">
+                <div class="conteudo">
+                    <div class="conteudo_texto">
+                        
+                        <div class="texto_titulo">Login</div>
+                        <div class="q-card">
+                            <div class="q-card-section">
+                                <form action="./register.jsp" method="POST" class="formulario">
+                                    <label for="email">E-mail:</label>
+                                    <input type="email" id="email" name="email" required>
+                        
+                                    <label for="senha">Senha:</label>
+                                    <input type="password" id="senha" name="senha" required>
+                        
+                                    <button type="submit" id="submit" class="btn-login">Entrar</button>
+                                </form> 
+                            </div>
+                        </div>                        
+                        <br><p>Não tem uma conta? <a href="./cadastro.html">Cadastre-se aqui</a></p>
+                    
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
