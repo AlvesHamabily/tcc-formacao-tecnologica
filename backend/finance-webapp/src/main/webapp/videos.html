@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso - Sicoob</title>
+    <link rel="stylesheet" href="./css/videos.css">
+</head>
+<body>
+    <nav class="navebar">
+        <div class="max-width">
+            <div class="titulo">
+                Sicoob Instituto - Curso
+            </div> 
+            <div class="lista">
+                <ul>
+                    <a href="./index.html">Início</a>
+                    <a href="./curso1.html">Curso</a>
+                    <a href="#mais_info">Mais informações </a>
+                </ul> 
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="curso" id="curso">
+            <div class="container">
+                <aside class="sidebar">
+                    <button id="menuToggle" class="menu-icon">☰</button>
+                    <div class="menu">
+                        <h2>Aulas</h2>
+                        <ul id="videoList"></ul>
+                    </div>
+                </aside>
+                
+                <section class="video-section">
+                    <h2 id="videoTitle">Selecione uma aula</h2>
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/pUrraEzgGQY?si=cweO9nbSLyxQayVv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="controls">
+                        <button onclick="navigate('prev')">Retornar</button>
+                        <button onclick="navigate('next')">Avançar</button>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+</body>
+</html> 
