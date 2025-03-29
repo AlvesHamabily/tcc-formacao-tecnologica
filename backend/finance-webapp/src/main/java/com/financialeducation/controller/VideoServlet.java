@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.financialeducation.model.Video;
 import com.financialeducation.model.VideoBean;
 import com.financialeducation.model.VideoDAO;
 
@@ -30,7 +29,7 @@ public class VideoServlet extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Video> videos = videoDAO.listarVideos();
+        List<VideoBean> videos = videoDAO.listarVideos();
 
         // Verificar ID atual
         String idParam = request.getParameter("id");
@@ -49,5 +48,30 @@ public class VideoServlet extends HttpServlet {
         request.setAttribute("videos", videos);
         request.setAttribute("videoAtual", videoAtual);
         request.getRequestDispatcher("videos.jsp").forward(request, response);
+    }
+    
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String titulo = request.getParameter("titulo");
+        String url = request.getParameter("url");
+
+        if (titulo == null || titulo.trim().isEmpty() || url == null || url.trim().isEmpty()) {
+            request.setAttribute("mensagem", "Título e URL são obrigatórios!");
+            request.getRequestDispatcher("videos.jsp").forward(request, response);
+            return;
+        }
+
+        VideoBean novoVideo = new VideoBean();
+        novoVideo.setTitulo(titulo);
+        novoVideo.setUrl(url);
+
+        boolean inserido = videoDAO.inserirVideo(novoVideo);
+
+        if (inserido) {
+            response.sendRedirect("videos"); // Redireciona para atualizar a lista
+        } else {
+            request.setAttribute("mensagem", "Erro ao inserir vídeo!");
+            request.getRequestDispatcher("videos.jsp").forward(request, response);
+        }
     }
 }
