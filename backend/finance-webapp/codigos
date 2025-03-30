@@ -1,0 +1,45 @@
+Formulario Tela dos professores
+
+<form action="videos" method="post">
+	<input type="text" id="titulo" name="titulo" required>
+	<label for="titulo">Título:</label>
+
+	<label for="url">URL do Vídeo:</label>
+	<input type="text" id="url" name="url" required>
+
+	<button type="submit">Adicionar Vídeo</button>
+</form>
+-----------------------------------------------------------
+Botão ganhar pontos
+
+<form action="PontosServlet" method="post">
+    <button type="submit">Ganhar Pontos</button>
+</form>
+-----------------------------------------------------------
+Puxar os pontos e nivel do usuario
+
+<%
+    Integer points = (Integer) session.getAttribute("points");
+    String nivel = (String) session.getAttribute("nivel");
+    if (points == null) points = 0;
+    if (nivel == null) nivel = "Iniciante";
+%>
+------------------------------------------------------------
+Formulario e Dash
+
+Forms	<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeINHdZVQhI2eeSjFT7jgJx_r4uqNxFhE0r419zKesQJbOyHA/viewform?embedded=true" width="640" height="381" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe></body>
+	
+Dash	<iframe width="600" height="450" src="https://lookerstudio.google.com/embed/reporting/469780a1-0e5f-4717-90d8-cd61527767f8/page/1NEFF" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+--------------------------------------------------------------
+Videos
+
+Lista dos videos no banco: <ul id="videoList"></ul>
+
+Titulo dinamico: <h2 id="videoTitle">Nenhum vídeo disponível</h2>
+
+Video:  <iframe id="videoFrame" width="800" height="450" 
+                		src="" frameborder="0" allowfullscreen></iframe>
+                		
+Botões: <button onclick="navigate('prev')">Retornar</button>
+        <button onclick="navigate('next')">Avançar</button>
+
