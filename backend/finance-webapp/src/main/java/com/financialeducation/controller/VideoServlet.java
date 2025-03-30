@@ -1,11 +1,13 @@
 package com.financialeducation.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 
 import com.financialeducation.model.VideoBean;
 import com.financialeducation.model.VideoDAO;
+import com.google.gson.Gson;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -29,27 +31,36 @@ public class VideoServlet extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<VideoBean> videos = videoDAO.listarVideos();
+    	response.setContentType("application/json");
+    	response.setCharacterEncoding("UTF-8");
 
-        // Verificar ID atual
-        String idParam = request.getParameter("id");
-        String action = request.getParameter("action");
-        VideoBean videoAtual = null;
+    	List<VideoBean> videos = videoDAO.listarVideos();
 
-        if (idParam != null && action != null) {
-            int videoId = Integer.parseInt(idParam);
-            boolean avancar = action.equals("next");
-            videoAtual = videoDAO.buscarProximoVideo(videoId, avancar);
-        }
+        String json = new Gson().toJson(videos);
 
-        if (videoAtual == null && !videos.isEmpty()) {
-            videoAtual = new VideoBean(videos.get(0).getId(), videos.get(0).getTitulo(), videos.get(0).getUrl());
-        }
-        request.setAttribute("videos", videos);
-        request.setAttribute("videoAtual", videoAtual);
-        request.getRequestDispatcher("videos.jsp").forward(request, response);
+        PrintWriter out = response.getWriter();
+        out.print(json);
+        out.flush();
     }
-    
+//        // Verificar ID atual
+//        String idParam = request.getParameter("id");
+//        String action = request.getParameter("action");
+//        VideoBean videoAtual = null;
+//
+//        if (idParam != null && action != null) {
+//            int videoId = Integer.parseInt(idParam);
+//            boolean avancar = action.equals("next");
+//            videoAtual = videoDAO.buscarProximoVideo(videoId, avancar);
+//        }
+//
+//        if (videoAtual == null && !videos.isEmpty()) {
+//            videoAtual = new VideoBean(videos.get(0).getId(), videos.get(0).getTitulo(), videos.get(0).getUrl());
+//        }
+//        request.setAttribute("videos", videos);
+//        request.setAttribute("videoAtual", videoAtual);
+//        request.getRequestDispatcher("videos.jsp").forward(request, response);
+//    }
+//    
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String titulo = request.getParameter("titulo");

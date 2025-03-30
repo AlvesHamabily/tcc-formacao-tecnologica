@@ -3,5 +3,5 @@
          xsi:schemaLocation="http://jakarta.ee/xml/ns/jakartaee 
                              http://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
-    <display-name>Finance WebApp</display-name>
+    <display-name>FinEduca</display-name>
 </web-app>
