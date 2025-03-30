@@ -28,6 +28,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     function loadVideo(index) {
         let video = videos[index];
+		
+		let videoUrl = `${video.url}?autoplay=1&controls=0&modestbranding=1&enablejsapi=1`;
+
+		
         document.getElementById("videoFrame").src = video.url;
         document.getElementById("videoTitle").innerText = video.titulo;
         videoAtualIndex = index;
