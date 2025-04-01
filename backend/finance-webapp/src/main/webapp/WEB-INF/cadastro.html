@@ -51,42 +51,27 @@
         margin-top: 0em;
         unicode-bidi: isolate;
     }
-	.btn {
-    display: inline-block;
-    font-weight: 400;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    user-select: none;
-    border: 1px solid transparent;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: .25rem;
-    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-	}
-	
-	.btn-primary, 
-	.btn-outline-primary {
-	    background-image: linear-gradient(to right, #212529, #6c757d, #212529);
-	    color: #fff;
-	    border: 1px solid #343a40;
-	}
-	
-	.btn-primary:hover, 
-	.btn-outline-primary:hover {
-	    color: #fff;
-	    background-color: #6c757d;
-	    border-color: #343a40;
-	}
-	
-	.btn-primary:active, 
-	.btn-outline-primary:active {
-	    background-image: linear-gradient(to right, #212529, #6c757d, #212529) !important;
-	    color: #fff;
-	    border-color: #343a40;
-	    box-shadow: none; 
-	}
+    .btn {
+        display: inline-block;
+        font-weight: 400;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        border: 1px solid transparent;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: .25rem;
+        transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+    .btn-primary {
+      background-image: linear-gradient(to right, #007bff, #5e0ce2, #0252fff2);
+	 
+	 }
     </style>
 
   </head>
@@ -97,7 +82,7 @@
       <a class="p-2 text-dark" href="index.html">Início</a>
       <a class="p-2 text-dark" href="login.html">Login</a>
       <a class="p-2 text-dark" href="video.html">Cursos</a>
-      <a class="p-2 text-dark" href="suporte.html">Support</a>
+      <a class="p-2 text-dark" href="suporte.html">Suporte</a>
     </nav>
     <a class="btn btn-outline-primary" href="login.html">Inscreva-se</a>
   </div>
@@ -132,7 +117,7 @@ function senhaValida(p) {
     var letrasMaiusculas = /[A-Z]/;
     var letrasMinusculas = /[a-z]/;
     var numeros = /[0-9]/;
-    var caracteresEspeciais = /[!@#$%^&*()\-_=+{};:,<.>]/; // Corrigido
+    var caracteresEspeciais = /[!@#$%^&*()\-_=+{};:,<.>]/; 
 
     // Verifica o comprimento mínimo
     if (p.length < 8) {
