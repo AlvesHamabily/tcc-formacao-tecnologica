@@ -5,10 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curso - Sicoob</title>
     <link rel="stylesheet" href="styles.css">
+    
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/jumbotron/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/4.0/examples/jumbotron/jumbotron.css" rel="stylesheet">
+    
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+		.margin{
+		margin-top: 7px;
+		width: 100%;
+		
+		}
+	</style>
 </head>
 <body>
-    <h1>Sicoob Instituto - Curso</h1>
-    <div class="container">
+
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-dark text-light fixed-top">
+
+    <h5 class="my-0 mr-md-auto font-weight-normal" translate="no">FinEduca</h5>
+    <nav class="my-2 my-md-0 mr-md-3">
+      <a class="p-2 text-light" href="index.html">Início</a>
+       <a class="p-2 text-light" href="login.html">Login</a>
+       <a class="p-2 text-light" href="video.html">Cursos</a>
+       <a class="p-2 text-light" href="suporte.html">Suporte</a>
+     </nav>
+     <a href="perfil.html" class="nav-link text-light ">
+      <i class="fas fa-user text-light" ></i>  Perfil </a>
+</div>
+
+    
+    
+     <div class="container-fluid margin">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+            
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <a class="d-flex align-items-center text-muted" href="#">
+              </a>
+            </h6>
+            
+              <li class="nav-item">
+                <a class="nav-link active" href="#">
+                  <span data-feather="home"></span>
+                  Aula 01 <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#seus_resultados">
+                  <span data-feather="file"></span>
+                  Aula 02
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#pesquisa">
+                  <span data-feather="file"></span>
+                  Aula 03
+                </a>
+              </li>
+            </ul>
+
+          </div>
+        </nav>
+        
+        
+        
+    <div class="container margin">
         <div class="sidebar">
             <h2>Aulas</h2>
             <ul id="videoList"></ul>
@@ -17,16 +85,18 @@
         <div class="video-section">
             <h2 id="videoTitle">Nenhum vídeo disponível</h2>
             <div class="video-container">
-                <iframe id="videoFrame" width="800" height="450" 
-                		src="" frameborder="0" allowfullscreen></iframe>
+                <iframe id="videoFrame" width="800" height="450" src="" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="controls">
                 <button onclick="navigate('prev')">Retornar</button>
                 <button onclick="navigate('next')">Avançar</button>
             </div>
         </div>
-    </div>
-    <a href="index.html">Home</a>
+        
+			</div>
+	        </div>
+   
+			</div>
     <script src="js/videos.js"></script>
 </body>
 </html>
