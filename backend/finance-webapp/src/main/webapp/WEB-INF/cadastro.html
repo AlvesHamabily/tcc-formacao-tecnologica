@@ -1,0 +1,161 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="alveshamabily">
+    <link rel="icon" href="img/logo_fineduca.png" style="border-radius: 6px;">
+
+    <title>Cadastre-se</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/4.0/examples/pricing/pricing.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css" rel="stylesheet">
+
+    
+    <style>
+    body{
+      background-color: white;
+      display: flex;
+    }
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+      .form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 80px auto 0; 
+    }
+    form {
+        max-width: 930px;
+        display: block;
+        margin-top: 0em;
+        unicode-bidi: isolate;
+    }
+    .btn {
+        display: inline-block;
+        font-weight: 400;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        border: 1px solid transparent;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: .25rem;
+        transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+    .btn-primary {
+      background-image: linear-gradient(to right, #007bff, #5e0ce2, #0252fff2);
+	 
+	 }
+    </style>
+
+  </head>
+  <body class="text-center">
+  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow fixed-top">
+    <h5 class="my-0 mr-md-auto font-weight-normal" translate="no"><a href="index.html" class="p-2 text-dark">FinEduca</a></h5>
+    <nav class="my-2 my-md-0 mr-md-3">
+      <a class="p-2 text-dark" href="index.html">Início</a>
+      <a class="p-2 text-dark" href="login.html">Login</a>
+      <a class="p-2 text-dark" href="video.html">Cursos</a>
+      <a class="p-2 text-dark" href="suporte.html">Suporte</a>
+    </nav>
+    <a class="btn btn-outline-primary" href="login.html">Inscreva-se</a>
+  </div>
+
+
+  <form class="form-signin" action="RegisterServlet" method="POST" onsubmit="return validarSenha()">
+    <img class="mb-4" src="img/logo_fineduca.png" alt="logo fineduca" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Cadastro</h1>
+
+    <label for="nome" class="sr-only">Nome</label>
+    <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome" required>
+
+    <label for="email" class="sr-only">E-mail</label>
+    <input type="email" id="email" name="email" class="form-control" placeholder="E-mail" required>
+
+    <label for="senha" class="sr-only">Senha</label>
+    <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha" required>
+
+    <label for="confirmar_senha" class="sr-only">Confirmar Senha</label>
+    <input type="password" id="confirmar_senha" name="confirmar_senha" class="form-control" placeholder="Confirmar Senha" required>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Cadastrar</button><br>
+
+    <p>Já tem uma conta? <a href="login.html">Faça login</a></p>
+    <p class="mt-5 mb-3 text-muted">&copy; FinEduca 2025</p>
+</form>
+
+</body>
+
+<script>
+function senhaValida(p) {
+    var letrasMaiusculas = /[A-Z]/;
+    var letrasMinusculas = /[a-z]/;
+    var numeros = /[0-9]/;
+    var caracteresEspeciais = /[!@#$%^&*()\-_=+{};:,<.>]/; 
+
+    // Verifica o comprimento mínimo
+    if (p.length < 8) {
+        return false;
+    }
+
+    // Contadores
+    var auxMaiuscula = 0;
+    var auxMinuscula = 0;
+    var auxNumero = 0;
+    var auxEspecial = 0;
+
+    for (var i = 0; i < p.length; i++) {
+        if (letrasMaiusculas.test(p[i])) auxMaiuscula++;
+        else if (letrasMinusculas.test(p[i])) auxMinuscula++;
+        else if (numeros.test(p[i])) auxNumero++;
+        else if (caracteresEspeciais.test(p[i])) auxEspecial++;
+    }
+
+    // Retorna verdadeiro se a senha atender a todos os critérios
+    return auxMaiuscula > 0 && auxMinuscula > 0 && auxNumero > 0 && auxEspecial > 0;
+}
+
+function validarSenha() {
+    var senha = document.getElementById("senha").value;
+    var confirmarSenha = document.getElementById("confirmar_senha").value;
+
+    if (senhaValida(senha)) {
+        if (senha === confirmarSenha) {
+            return true;
+        } else {
+            alert("As senhas não coincidem!");
+            return false;
+        }
+    } else {
+        alert("Senha fraca! A senha deve conter pelo menos 8 caracteres, incluindo letra maiúscula, minúscula, número e caractere especial.");
+        return false;
+    }
+}
+</script>
+</html>

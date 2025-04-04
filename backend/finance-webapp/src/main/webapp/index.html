@@ -1,143 +1,185 @@
+
 <!doctype html>
-<html lang="pt-br">
+<html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TCC - FORMAÇÃO TECNOLÓGIA</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="img/logo_fineduca.png">
+
+    <title>FinEduca - Início</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/jumbotron/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/4.0/examples/jumbotron/jumbotron.css" rel="stylesheet">
+    
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <style>
+    body{
+    text-align: justify;
+    font-size:18px;
+    }
+    h2{text-align:center;}
+    .nav-link:hover {
+	  text-decoration: underline;
+	}
+	
+	.d-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+	}
+
+	
+	.btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+	}
+	
+	.btn-primary, 
+	.btn-outline-primary {
+	    background-image: linear-gradient(to right, #212529, #6c757d, #212529);
+	    color: #fff;
+	    border: 1px solid #212529;
+	}
+	
+	.btn-primary:hover, 
+	.btn-outline-primary:hover {
+	    color: #fff;
+	    background-color: #6c757d;
+	    border-color: #212529;
+	}
+	
+	.btn-primary:active, 
+	.btn-outline-primary:active {
+	    background-image: linear-gradient(to right, #212529, #6c757d, #212529) !important;
+	    color: #fff;
+	    border-color: #343a40;
+	    box-shadow: none; 
+	}
+	
+	.btn-comece {
+    background: #343a40;
+    color: #fff;
+    padding: 10px;
+    width: 100px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto; }
+	
+    </style>
+    
   </head>
+
   <body>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-dark text-light fixed-top">
 
-    <nav class="navebar">
-      <div class="max-width">
-          <div class="titulo">
-              Bem Vindo(a)!
-          </div> 
-          <div class="lista">
-              <ul>
-                  <a href="index.html">Início</a>
-                  <a href="#grupos">Grupos</a>
-                  <a href="#educacao_financeira">Educação Financeira </a>
-                  <a href="financas.html">Cursos </a>
-                  <a href="#mais_info">Mais informações </a>
-              </ul> 
-          </div>
-      </div>
-  </nav>
+    <h5 class="my-0 mr-md-auto font-weight-normal" translate="no">FinEduca</h5>
+    <nav class="my-2 my-md-0 mr-md-3">
+      <a class="p-2 text-light" href="index.html">Início</a>
+       <a class="p-2 text-light" href="login.html">Login</a>
+       <a class="p-2 text-light" href="video.html">Cursos</a>
+       <a class="p-2 text-light" href="suporte.html">Suporte</a>
+     </nav>
+     <a href="perfil.html" class="nav-link text-light ">
+      <i class="fas fa-user text-light" ></i> Perfil </a>
+   </div>
 
-<main>
-  <section class="topo">
-      <div class="max-width">
-          <div class="conteudo">
-      
-              <div class="conteudo_texto">
-                  <div class="texto_titulo">
-                      Você já ouviu falar de Educação Financeira?
-                  </div>
-                  <div class="texto_descricao">
-                      <p>A educação financeira é fundamental para capacitar indivíduos a gerenciar suas finanças de maneira eficaz, promovendo o bem-estar econômico e social. 
-                        Introduzir esse conhecimento desde a juventude é crucial para formar adultos mais conscientes e preparados para tomar decisões financeiras responsáveis. </p>
-                       
-                        <p><h4>Importância da Educação Financeira para Jovens</h4>
-                        Iniciar a educação financeira na juventude proporciona aos jovens as habilidades permitidas para lidar com questões econômicas do dia a dia, como poupança, investimentos e consumo consciente. Essa base contribui para a formação de cidadãos mais preparados para enfrentar desafios financeiros futuros.</p>
-                        <p><h4>Panorama Atual no Brasil</h4>
-                        No Brasil, a educação financeira tem ganhado destaque nos últimos anos. Entretanto, os dados revelam que ainda há um longo caminho a percorrer. Uma pesquisa do Serviço de Proteção ao Crédito (SPC Brasil) revelou que 46% dos brasileiros não controlam seu orçamento mensal, evidenciando a necessidade de uma educação financeira mais eficaz desde cedo.
-                    
-                        
-                      </p>
-                            
-                  </div>
-              </div>
-              <div class="conteudo_midia">
-                  <img src="./img/fundo_sicoob.jpeg" alt="fundo_sicoob" class="foto_perfil">
-              </div>
-          </div>
-  </div>
-  </section>
 
-  <section class="grupos" id="grupos"> 
-      <div class="max-width">
-          <div class="conteudo">
-              <div class="conteudo_midia">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/vPTIz1v7fTs?si=NL-dbROzDDBWpAS5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="border-radius: 7px;"></iframe>
-              </div>
-              <div class="conteudo_texto">
-                  <div class="texto_titulo">
-                    Iniciativas e Programas de Educação Financeira
-                  </div>
-                  <div class="texto_descricao">
-                    <p><h4>Desafios e Oportunidades</h4>
-            
-                        <p>Apesar dos avanços, a educação financeira ainda enfrenta desafios importantes no Brasil. O Programa Internacional de Avaliação de Estudantes (PISA) indica que muitos estudantes brasileiros possuem baixa exposição a finanças nas escolas, o que impacta diretamente seu desempenho em educação financeira.</p>
-                        <p>Contudo, a inclusão crescente da educação financeira nos currículos escolares e a ampliação de programas específicos para jovens representam oportunidades para reverter esse cenário. Ao fortalecer essas iniciativas, é possível promover uma geração mais consciente e preparada para os desafios econômicos futuros.</p>
-    
-                    </p> 
-                    <div class="lista_grupos">
-                        <li><a href="" target="_blank"> Midia</a><br></li>
-                        <li><a href="" target="_blank"> Midia</a><br></li>
-                        <li><a href="" target="_blank"> Midia</a></li>
-                        <li><a href="" target="_blank"> Midia</a></li>     
-                        
-                    </div><br>
-                      
-                        Além disso, instituições como o Sebrae oferecem programas voltados para adolescentes e jovens, com o objetivo de inseri-los no cotidiano financeiro e prepará-los para uma gestão consciente de seus recursos.<br><br>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>    
-  <section class="educacao_financeira" id="educacao_financeira">
-    <div class="max-width">
-        <div class="conteudo">
-            <div class="conteudo_texto">
-                <div class="texto_titulo">
-                    Educação Financeira
-                </div>
-                <div class="texto_descricao">
-                    No Sicoob, acreditamos que uma boa relação com o dinheiro transforma vidas. 
-                    Educação financeira não é sobre ter mais, mas sobre saber fazer o melhor com o que se tem. Pequenas escolhas diárias podem abrir grandes oportunidades no futuro.  
-                    Aprender a poupar, investir e planejar garante mais tranquilidade e realização para você e sua família. E o melhor: com o conhecimento certo, o controle das suas finanças está ao seu alcance!  
-                    <br>Comece agora a construir um futuro mais próspero! Inscreva-se em nosso curso de educação financeira e dê o primeiro passo para uma vida financeira equilibrada e inteligente.
+    <main role="main">
 
-                </div>
-            </div>
-            <div class="conteudo_midia">
-                <div>
-                <img src="./img/fundo_sicoob.jpeg" alt="image">
-                </div>
-                
-                <div class="btn-iniciar">
-                    <a href="./login.html"><button class="iniciar" id="iniciar">Comece Já</button></a>
-                </div>
-            </div>
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Bem Vindo(a)!</h1>
+          <p>Você já ouviu falar de Educação Financeira? Embarque nessa jornada de aprendizado e prática para coehcer sobre o mundo financeiro e fazer a diferença na sociedade.
+          Ah, e atenção, preparamos um curso perfeito para você aprender mais e colocar em prática os seus conhecimentos sobre a vida financiera. Não perca!</p>
         </div>
-    </div>
-</section>
-
-  <section class="social" id="mais_info">
-      <div class="max-width">
-          <div class="conteudo">
-              <div class="conteudo_texto">
-                  <div class="texto_titulo">
-                      Mais Informações
-                  </div>
-                  <div class="texto_descricao">
-                      <div class="lista_redes">
-                          <ul>
-                              <a href="" target="_blank"><button>Sicoob Credip</button></a>
-                              <a href="https://dotum.com.br/" target="_blank"><button>Dotum</button></a>
-                              <a href="https://github.com/AlvesHamabily/tcc-formacao-tecnologica" target="_blank"><button>Equipe</button></a>
-                          </ul>
-                      </div>
-                  </div>
-              </div>    
-          </div>
       </div>
-  </section> 
 
 
-  </main>
-    
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h2>Você já ouviu falar ?</h2>
+            <p>A educação financeira é fundamental para capacitar indivíduos a gerenciar suas finanças de maneira eficaz, promovendo o bem-estar econômico e social. Introduzir esse conhecimento desde a juventude é crucial para formar adultos mais conscientes e preparados para tomar decisões financeiras responsáveis.</p>
+          </div>
+          <div class="col-md-4">
+            <h2>Importância</h2>
+            <p>Iniciar a educação financeira na juventude proporciona aos jovens as habilidades permitidas para lidar com questões econômicas do dia a dia, como poupança, investimentos e consumo consciente. Essa base contribui para a formação de cidadãos mais preparados para enfrentar desafios financeiros futuros.</p>
+          </div>
+          <div class="col-md-4">
+            <h2>Panorama  no Brasil</h2>
+            <p>No Brasil, a educação financeira tem ganhado destaque nos últimos anos. Entretanto, os dados revelam que ainda há um longo caminho a percorrer. Uma pesquisa do Serviço de Proteção ao Crédito (SPC Brasil) revelou que 46% dos brasileiros não controlam seu orçamento mensal, evidenciando a necessidade de uma educação financeira mais eficaz desde cedo.</p>
+          </div>
+        </div>
+        <hr>
+      </div> <!-- /container -->
+
+<!-- /conteudo video -->
+ <div class="jumbotron">
+      <div class="container" >
+        <div class="row">
+          <div class="col-md-3">
+                <iframe width="450" height="300" src="https://www.youtube.com/embed/vPTIz1v7fTs?si=NL-dbROzDDBWpAS5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="border-radius: 7px;"></iframe>
+          </div>
+          <div class="col-md-2">
+ 	
+          </div>
+          <div class="col-md-7">
+            <h2>Desafios e Oportunidades</h2>
+ 				<p>Apesar dos avanços, a educação financeira ainda enfrenta desafios importantes no Brasil. O Programa Internacional de Avaliação de Estudantes (PISA) indica que muitos estudantes brasileiros possuem baixa exposição a finanças nas escolas, o que impacta diretamente seu desempenho em educação financeira.</p>
+                <p>Contudo, a inclusão crescente da educação financeira nos currículos escolares e a ampliação de programas específicos para jovens representam oportunidades para reverter esse cenário. Ao fortalecer essas iniciativas, é possível promover uma geração mais consciente e preparada para os desafios econômicos futuros.</p>
+              </div>
+        </div>
+        <hr>
+      </div> <!-- /conteudo video -->
+</div>
+
+<!-- seção chamada para o curso--> 
+<div class="container">
+   <div class="row">
+     	
+     <div class="col-md-12">
+       <h2>Panorama  no Brasil</h2>
+       <p>No Sicoob, sabemos que uma boa relação com o dinheiro transforma vidas. Mais do que ter, é saber usar. Pequenas escolhas diárias criam grandes oportunidades.  
+		<br>Aprenda a poupar, investir e planejar para garantir mais tranquilidade e realização. Com o conhecimento certo, o controle das suas finanças está ao seu alcance!  
+		<strong>Inscreva-se em nosso curso</strong> e dê o primeiro passo para uma vida financeira equilibrada e inteligente.</p>
+		<a href="login.html"><button class="btn btn-lg btn-primary btn-block btn-comece">Comece Já!</button></a><br> 
+     </div>
+   </div>
+   <hr>
+ </div>
+
+
+    </main>
+
+    <footer class="container text-center">
+      <p>&copy; FinEduca 2025</p>
+    </footer>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
+    <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
   </body>
 </html>
