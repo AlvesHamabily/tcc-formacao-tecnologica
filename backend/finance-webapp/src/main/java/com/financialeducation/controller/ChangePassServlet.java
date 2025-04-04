@@ -7,24 +7,21 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import com.financialeducation.model.UsuarioDAO;
-import com.financialeducation.model.UsuarioBean;
 
-@WebServlet("/RegisterServlet")
-public class RegisterServlet extends HttpServlet {
+@WebServlet("/ChangePassServlet")
+public class ChangePassServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("nome");
-        String password = request.getParameter("password");
         String email = request.getParameter("email");
-        
+        String novaSenha = request.getParameter("password");
+
         UsuarioDAO usuarioDAO = new UsuarioDAO();
-        UsuarioBean usuario = new UsuarioBean(username, email, password);
-        
-        if (usuarioDAO.registrarUsuario(usuario)) {
+        if (usuarioDAO.alterarSenha(username, email, novaSenha)) {
             response.sendRedirect("index.html?register=success");
         } else {
-            response.sendRedirect("cadastro.html?error=1");
+            response.sendRedirect("index.html?error=1");
         }
     }
 }

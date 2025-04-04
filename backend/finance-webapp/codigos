@@ -42,4 +42,37 @@ Video:  <iframe id="videoFrame" width="800" height="450"
                 		
 Botões: <button onclick="navigate('prev')">Retornar</button>
         <button onclick="navigate('next')">Avançar</button>
+--------------------------------------------------------
+Troca senha
 
+    <form action="ChangePassServlet" method="POST">
+        <label for="nome">Nome de Usuário</label>
+        <input type="text" id="nome" name="nome" placeholder="Digite seu nome de usuário" required>
+
+        <label for="oldpass">Senha Atual</label>
+        <input type="password" id="oldpass" name="oldpass" placeholder="Digite sua senha atual" required>
+
+        <label for="password">Nova Senha</label>
+        <input type="password" id="password" name="password" placeholder="Digite sua nova senha" required>
+
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+
+        <button type="submit">Alterar Senha</button>
+    </form>
+-------------------------------------------------------------------
+Formulario definir professor
+
+    <form action="DefProfessorServlet" method="POST">
+        <label for="nome">Nome de Usuário</label>
+        <input type="text" id="email" name="email" placeholder="Digite o email de usuário" required>
+
+		
+		<label for="defProfessor">
+		    <input type="checkbox" id="defProfessor" name="defProfessor" value="true">
+		    Definir como professor
+		</label>
+
+        <button type="submit">Enviar</button>
+    </form>
+----------------------------------------------------------------

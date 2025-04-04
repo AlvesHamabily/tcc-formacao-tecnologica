@@ -8,56 +8,46 @@ window.onYouTubeIframeAPIReady = function () {
     carregarVideos();
 };
 
-// Carrega a lista de vídeos do backend
-function carregarVideo(index) {
-    if (index < 0 || index >= videos.length) return;
-
-    currentIndex = index;
-    document.getElementById('videoTitle').textContent = videos[index].titulo;
-
-    let videoId = extrairIdYoutube(videos[index].url);
-    if (!videoId) {
-        console.error('ID do vídeo inválido:', videos[index].url);
-        return;
-    }
-
-    if (!player) {
-        console.log("Criando novo player do YouTube...");
-        player = new YT.Player('videoFrame', {
-            height: '450',
-            width: '800',
-            videoId: videoId,
-            events: {
-                onReady: bloquearBotaoAvancar // Liga o monitoramento ao carregamento
-            }
-        });
-    } else {
-        console.log("Carregando novo vídeo:", videoId);
-        player.loadVideoById(videoId);
-        bloquearBotaoAvancar(); // Liga o monitoramento ao novo vídeo
-    }
-
-    document.getElementById('nextButton').disabled = (currentIndex >= videos.length - 1);
-}
-
 function bloquearBotaoAvancar() {
     const nextButton = document.getElementById('nextButton');
     nextButton.disabled = true; // Bloqueia inicialmente
 
-    player.addEventListener('onStateChange', function (event) {
-        if (event.data === YT.PlayerState.PLAYING) {
-            const interval = setInterval(() => {
-                const duration = player.getDuration();
-                const currentTime = player.getCurrentTime();
-                const progress = (currentTime / duration) * 100;
+    // Monitorar o progresso do vídeo
+    const monitorarProgresso = setInterval(() => {
+        const duration = player.getDuration();
+        const currentTime = player.getCurrentTime();
+        const progress = (currentTime / duration) * 100;
 
-                if (progress >= 80) {
-                    nextButton.disabled = false; // Desbloqueia o botão
-                    clearInterval(interval); // Para o monitoramento
-                }
-            }, 1000); // Checa a cada segundo
+        if (progress >= 80) {
+            nextButton.disabled = false; // Desbloqueia o botão
+            clearInterval(monitorarProgresso); // Para o monitoramento
         }
-    });
+    }, 1000); // Checa a cada segundo
+}
+
+// Carrega a lista de vídeos do backend
+function carregarVideos() {
+	console.log("Chamando carregarVideos()...");  // LOG PARA TESTE
+    fetch('/FinEduca/videos')
+        .then(response => response.json())
+        .then(data => {
+			console.log("Vídeos recebidos:", data);  // LOG PARA TESTE
+            if (!Array.isArray(data)) {
+                console.error("Resposta inesperada da API:", data);
+                return;
+            }
+
+			console.log("Populando lista de vídeos:", videos);
+			
+            videos = data;
+            if (videos.length > 0) {
+                carregarListaVideos();
+                carregarVideo(0); // Carrega o primeiro vídeo
+            } else {
+                console.warn("Nenhum vídeo encontrado na API.");
+            }
+        })
+        .catch(error => console.error('Erro ao buscar vídeos:', error));
 }
 
 // Popula a lista lateral de vídeos
@@ -91,10 +81,10 @@ function extrairIdYoutube(url) {
 // Carrega um vídeo no player
 function carregarVideo(index) {
     if (index < 0 || index >= videos.length) return;
-    
+
     currentIndex = index;
     document.getElementById('videoTitle').textContent = videos[index].titulo;
-    
+
     let videoId = extrairIdYoutube(videos[index].url);
     if (!videoId) {
         console.error('ID do vídeo inválido:', videos[index].url);
@@ -106,14 +96,24 @@ function carregarVideo(index) {
         player = new YT.Player('videoFrame', {
             height: '450',
             width: '800',
-            videoId: videoId
+            videoId: videoId,
+            events: {
+                onStateChange: (event) => {
+                    if (event.data === YT.PlayerState.PLAYING) {
+                        bloquearBotaoAvancar(); // Liga o monitoramento ao vídeo atual
+                    }
+                }
+            }
         });
     } else {
         console.log("Carregando novo vídeo:", videoId);
         player.loadVideoById(videoId);
+
+        // Monitorar o progresso novamente para o novo vídeo
+        bloquearBotaoAvancar();
     }
-    
-    // Atualiza botão "Avançar"
+
+    // Bloqueia o botão "Avançar" para vídeos futuros
     document.getElementById('nextButton').disabled = (currentIndex >= videos.length - 1);
 }
 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <!-- Importa a API do YouTube -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+  
+  <script>
+  if (typeof YT === "undefined") {
+    console.error("API do YouTube não carregada.");
+  } else {
+    console.log("API do YouTube carregada.");
+  }
+</script>
+ 
+  
+  <!-- Importa o script customizado; verifique se o caminho está correto -->
+  <script src="js/script.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curso - Sicoob</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h1>Sicoob Instituto - Curso</h1>
+  <div class="container">
+    <div class="sidebar">
+      <h2>Aulas</h2>
+      <ul id="videoList"></ul>
+    </div>
+
+    <div class="video-section">
+      <h2 id="videoTitle">Nenhum vídeo disponível</h2>
+      <div class="video-container">
+        <!-- Define dimensões para que o player seja visível -->
+        <div id="videoFrame" style="width:800px; height:450px;"></div>
+      </div>
+      <div class="controls">
+        <button onclick="navigate('prev')">Retornar</button>
+        <button id="nextButton" onclick="navigate('next')" disabled>Avançar</button>
+      </div>
+    </div>
+  </div>
+  <a href="index.html">Home</a>
+  
+</body>
+</html>
