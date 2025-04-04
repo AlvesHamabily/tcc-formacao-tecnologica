@@ -9,7 +9,7 @@ public class Conexao {
 	//credenciais de conexão com o banco cloud
     private static final String URL = "jdbc:postgresql://34.95.165.153:5432/postgres";
     private static final String USER = "postgres";
-    private static final String PASSWORD = "|mC(\"9E*X^]k;\"5T";
+    private static final String PASSWORD = "meu_banco_de_dados_na_nuvem";
     
     public static Connection getConnection() throws SQLException {
         try {

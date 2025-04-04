@@ -1,18 +1,14 @@
 package com.financialeducation.controller;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-
-import com.financialeducation.model.Conexao;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import com.financialeducation.model.UsuarioDAO;
+import com.financialeducation.model.UsuarioBean;
 
 @WebServlet("/PontosServlet")
 public class PontosServlet extends HttpServlet {
@@ -26,37 +22,14 @@ public class PontosServlet extends HttpServlet {
         }
         
         String username = (String) session.getAttribute("username");
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        UsuarioBean usuario = usuarioDAO.atualizarPontos(username);
         
-        try (Connection con = Conexao.getConnection()) {
-            // Atualiza os pontos do usuário
-            PreparedStatement ps = con.prepareStatement("UPDATE users SET points = points + 10 WHERE username=?");
-            ps.setString(1, username);
-            ps.executeUpdate();
-            
-            // Recupera os pontos atualizados
-            ps = con.prepareStatement("SELECT points FROM users WHERE username=?");
-            ps.setString(1, username);
-            ResultSet rs = ps.executeQuery();
-            
-            if (rs.next()) {
-                int points = rs.getInt("points");
-                String nivel;
-                
-                if (points <= 100) {
-                    nivel = "Iniciante";
-                } else if (points <= 500) {
-                    nivel = "Intermediário";
-                } else {
-                    nivel = "Experiente";
-                }
-                
-                session.setAttribute("points", points);
-                session.setAttribute("nivel", nivel);
-            }
-            
+        if (usuario != null) {
+            session.setAttribute("points", usuario.getPontos());
+            session.setAttribute("nivel", usuario.getNivel());
             response.sendRedirect("logado.jsp?success=1");
-        } catch (Exception e) {
-            e.printStackTrace();
+        } else {
             response.sendRedirect("logado.jsp?error=1");
         }
     }
