@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="img/logo_fineduca.png">
 
-    <title>FinEduca - Início</title>
+    <title>FinEduca - Suporte</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/jumbotron/">
 
@@ -31,15 +31,16 @@
     .nav-link:hover {
 	  text-decoration: underline;
 	}
-	
+    .margin{
+		margin-top: 19px; }
+
 	.d-flex {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
 	}
 
-	
-	
+    }
 	.btn {
     display: inline-block;
     font-weight: 400;
@@ -148,16 +149,16 @@
         
               <div class="row featurette">
                 <div class="col-md-5">
-                  <h3 class="featurette-heading">O que tem por trás das telas? <span class="text-muted">Descubra <a href="https://github.com/AlvesHamabily/tcc-formacao-tecnologica" style="text-decoration:dashed; color: #6c757d;"><i>Aqui!</i></a></span></h3>
+                  <h3 class="featurette-heading">O que tem por trás das telas? <span class="text-muted">Descubra! </span></h3>
                   <p class="lead">Por meio do GitHub, um gerenciador de repositórios remotos, você pode acompanhar todas as etapas de desenvolvimento do projeto.
                     Se preferir, também pode nos contactar por lá. Embarque também nessa jornada de conhecimento!
                   </p>
                 </div>
-                <div class="col-md-7">
+                <div class="col-md-7 margin">
                     <h3>Leia o README do projeto</h3>
                     <div id="readme-content" class="card p-3" style="background-color: #f8f9fa;"></div>
                 </div>
-
+<p><a href="https://github.com/AlvesHamabily/tcc-formacao-tecnologica" style="text-decoration:dashed; color: #6c757d;"><i>Clique para saber mais !</i></a></p>
               </div>
 
 
@@ -174,29 +175,35 @@
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
     <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
-    <script>
-        async function carregarReadme() {
-          const url = 'https://api.github.com/repos/AlvesHamabily/tcc-formacao-tecnologica/readme';
-        
-          try {
-            const response = await fetch(url, {
-              headers: { 'Accept': 'application/vnd.github.v3.raw' }
-            });
-            const markdown = await response.text();
-        
-            // Converter markdown para HTML (usando marked.js)
-            document.getElementById('readme-content').innerHTML = marked.parse(markdown);
-          } catch (error) {
-            console.error("Erro ao carregar README:", error);
-            document.getElementById('readme-content').innerHTML = "<p>Não foi possível carregar o conteúdo.</p>";
+
+
+      <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+      <script>
+      async function carregarReadmeDaBranch(branch) {
+        const url = `https://api.github.com/repos/AlvesHamabily/tcc-formacao-tecnologica/contents/README.md?ref=${branch}`;
+      
+        try {
+          const response = await fetch(url, {
+            headers: { 'Accept': 'application/vnd.github.v3.raw' }
+          });
+      
+          if (!response.ok) {
+            throw new Error("Erro: " + response.status);
           }
+      
+          const markdown = await response.text();
+          document.getElementById('readme-content').innerHTML = marked.parse(markdown);
+        } catch (error) {
+          console.error("Erro ao carregar README:", error);
+          document.getElementById('readme-content').innerHTML = "<p>Não foi possível carregar o conteúdo.</p>";
         }
-        
-        carregarReadme();
-        </script>
-        
-        <!-- Inclui a lib "marked" para converter markdown em HTML -->
-        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-        
+      }
+      
+      // mudar nome branch
+      carregarReadmeDaBranch('homolog');
+      </script>
+      
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
   </body>
 </html>

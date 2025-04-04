@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="img/logo_fineduca.png">
 
-    <title>Videos - T</title>
+    <title>FinEduca - Perfil</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/dashboard/">
 
@@ -21,8 +21,9 @@
 		.margin{
 		margin-top: 9px;
 		margin-bottom: 20px;
-		}
-		
+    padding-top: 80px;
+}
+
 		.valor{
 		font-weight:bold ;
 		font-size: 50px;
@@ -32,20 +33,30 @@
 		h2{margin-top: 40px;}
 		
 		.grey{background:#e9ecef;}
+    
+	
+	.jumbotron{
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+
 	</style>
     
   </head>
 
   <body>
-    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="index.html" translate="no" >FinEduca</a>
-      <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-      <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-          <a class="nav-link" href="perfil.html">Perfil</a> 
-        </li>
-      </ul>
-    </nav>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-dark text-light fixed-top">
+
+      <h5 class="my-0 mr-md-auto font-weight-normal" translate="no">FinEduca</h5>
+      <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-light" href="index.html">Início</a>
+         <a class="p-2 text-light" href="login.html">Login</a>
+         <a class="p-2 text-light" href="video.html">Cursos</a>
+         <a class="p-2 text-light" href="suporte.html">Suporte</a>
+       </nav>
+       <a href="perfil.html" class="nav-link text-light ">
+        <i class="fas fa-user text-light" ></i> Perfil </a>
+     </div>
 
     <div class="container-fluid">
       <div class="row">
@@ -80,8 +91,8 @@
           
 
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+          <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-5 px-4" style="padding-top: 100px;">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
             <h1 class="h2">Dashboard</h1>
           </div>
 
@@ -283,5 +294,13 @@
         }
       });
     </script>
+
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const navbarHeight = document.querySelector(".fixed-top").offsetHeight;
+    document.querySelector("main").style.paddingTop = navbarHeight + 20 + "px"; // 20px extra de espaço
+  });
+</script>
+
   </body>
 </html>
