@@ -1,5 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+  <!-- Importa a API do YouTube -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+  
+  <script>
+  if (typeof YT === "undefined") {
+    console.error("API do YouTube não carregada.");
+  } else {
+    console.log("API do YouTube carregada.");
+  }
+</script>
+ 
+  
+  <!-- Importa o script customizado; verifique se o caminho está correto -->
+  <script src="js/script.js"></script>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,9 +42,5 @@
   </div>
   <a href="index.html">Home</a>
   
-  <!-- Importa a API do YouTube -->
-  <script src="https://www.youtube.com/iframe_api"></script>
-  <!-- Importa o script customizado; verifique se o caminho está correto -->
-  <script src="js/script.js"></script>
 </body>
 </html>
