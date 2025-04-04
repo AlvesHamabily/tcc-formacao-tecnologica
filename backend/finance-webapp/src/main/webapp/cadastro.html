@@ -87,6 +87,27 @@
 	    border-color: #343a40;
 	    box-shadow: none; 
 	}
+  .card-termos {
+  display: none;           
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #333;
+  text-align: justify;
+  margin-top: 70px;
+}
+h4{text-align: center;}
+ul{
+  font-weight: bold;
+}
+.card-conteudo {
+  color: #333;
+  font-size: 14px;
+  margin: 70px 50px 15px 50px;
+
+}
     </style>
 
   </head>
@@ -103,7 +124,7 @@
   </div>
 
 
-  <form class="form-signin" action="RegisterServlet" method="POST" onsubmit="return validarSenha()">
+  <form class="form-signin" action="RegisterServlet" method="POST" onsubmit="return validarCadastro()">
     <img class="mb-4" src="img/logo_fineduca.png" alt="logo fineduca" width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal">Cadastro</h1>
 
@@ -119,11 +140,64 @@
     <label for="confirmar_senha" class="sr-only">Confirmar Senha</label>
     <input type="password" id="confirmar_senha" name="confirmar_senha" class="form-control" placeholder="Confirmar Senha" required>
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Cadastrar</button><br>
+    <div class="form-check mt-3">
+      <input type="checkbox" id="termos" class="form-check-input" required>
+      <label for="termos" class="form-check-label">
+        Aceito e concordo com os <a href="#" onclick="mostrarTermos(event)">termos de política e privacidade</a>.
+      </label>
+    </div>
+
+    <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Cadastrar</button><br>
 
     <p>Já tem uma conta? <a href="login.html">Faça login</a></p>
     <p class="mt-5 mb-3 text-muted">&copy; FinEduca 2025</p>
 </form>
+
+
+
+    <div id="card-termos" class="card-termos">
+      <div class="card-conteudo">
+        <h4>Termo de Consentimento e Ciência - Política de Privacidade e Proteção de Dados Pessoais</h4>
+        <p>
+          Nós, "FinEduca cursos sobre cooperativa", comprometemo-nos com a privacidade e a proteção dos dados pessoais dos nossos usuários, conforme as diretrizes da Lei Geral de Proteção de Dados (Lei nº 13.709/2018). Este termo estabelece os direitos e responsabilidades relacionados à coleta, uso e armazenamento de informações.
+        </p>
+        <p>
+        <ul>1. Dados Coletados:</ul>
+          Nome completo do usuário;
+          Endereço de e-mail; 
+          Senha para acesso à plataforma.
+         </p> <p>
+          <ul>2. Finalidade e Uso:</ul>
+          Os dados serão utilizados para:
+          Identificar o usuário na plataforma;
+          Proporcionar acesso seguro e personalizado;
+          Comunicação relacionada ao conteúdo dos cursos oferecidos.
+       
+        </p>
+        <p>
+          <ul>3. Armazenamento e Segurança:</ul>
+          Todas as informações serão criptografadas para garantir sua proteção;
+          O armazenamento será realizado em sistemas seguros, de acordo com as melhores práticas de mercado.
+        </p>
+        <p>
+          <ul>4. Consentimento:</ul>
+          Ao aceitar este termo, o usuário expressa ciência e concordância com o uso de seus dados pessoais para as finalidades descritas.
+          O usuário compromete-se a manter sua senha segura e a comunicar qualquer uso não autorizado.
+        </p>
+        <p>
+          <ul>5. Direitos do Usuário:</ul>
+          Solicitar a exclusão, correção ou acesso aos seus dados;
+
+        </p>
+        <p>
+          <ul>4. Criptografia:</ul>
+          Este termo, bem como os dados fornecidos, serão protegidos por tecnologias de criptografia, garantindo confidencialidade e integridade.
+        </p>
+        <p>Para sair, clique novamente em termos de politica e privacidade</p>
+        </div>
+    </div>
+  
+
 
 </body>
 
@@ -144,6 +218,7 @@ function senhaValida(p) {
     var auxMinuscula = 0;
     var auxNumero = 0;
     var auxEspecial = 0;
+    
 
     for (var i = 0; i < p.length; i++) {
         if (letrasMaiusculas.test(p[i])) auxMaiuscula++;
@@ -173,4 +248,48 @@ function validarSenha() {
     }
 }
 </script>
+
+
+<script>
+  function validarCadastro() {
+      var termos = document.getElementById("termos");
+  
+      if (senha !== confirmarSenha) {
+          alert("As senhas não coincidem!");
+          return false;
+      }
+  
+      if (!termos.checked) {
+          alert("Você deve aceitar os termos de política e privacidade para continuar.");
+          return false;
+      }
+  
+      return true;
+  }
+  </script>
+<script>
+  function mostrarTermos(event) {
+    event.preventDefault(); // evita o comportamento padrão do link
+    const card = document.getElementById("card-termos");
+    card.style.display = (card.style.display === "none" || card.style.display === "") ? "block" : "none";
+  }
+  
+  function validarCadastro() {
+    var senha = document.getElementById("senha").value;
+    var confirmarSenha = document.getElementById("confirmar_senha").value;
+    var termos = document.getElementById("termos");
+  
+    if (senha !== confirmarSenha) {
+      alert("As senhas não coincidem!");
+      return false;
+    }
+  
+    if (!termos.checked) {
+      alert("Você deve aceitar os termos de política e privacidade para continuar.");
+      return false;
+    }
+  
+    return true;
+  }
+  </script>
 </html>
