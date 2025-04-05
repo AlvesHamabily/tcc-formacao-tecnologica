@@ -7,7 +7,6 @@ import java.sql.SQLException;
 
 public class Conexao {
 
-    private static final Dotenv dotenv = Dotenv.load();
     private static final String URL = "jdbc:postgresql://34.95.165.153:5432/postgres";
     private static final String USER = "postgres";
     private static final String PASSWORD = "minhasenha";
