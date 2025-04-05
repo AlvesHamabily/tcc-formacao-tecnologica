@@ -11,9 +11,13 @@ import org.mindrot.jbcrypt.BCrypt;
 import com.financialeducation.model.UsuarioDAO;
 import com.financialeducation.model.UsuarioBean;
 
-@WebServlet("/LoginServlet")
+@WebServlet("/Login")
 public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("login.html").forward(request, response);
+    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
@@ -26,9 +30,9 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("email", usuario.getEmail());
             session.setAttribute("username", usuario.getUsername());
-            response.sendRedirect("logado.jsp");
+            response.sendRedirect("video.html");
         } else {
-            response.sendRedirect("index.jsp?error=1");
+            response.sendRedirect("login.html?error=1");
         }
     }
 }

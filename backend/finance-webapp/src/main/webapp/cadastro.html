@@ -1,6 +1,9 @@
 
 <!doctype html>
 <html lang="en">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="js/cadastro.js"></script>
+	
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -124,7 +127,7 @@ ul{
   </div>
 
 
-  <form class="form-signin" action="RegisterServlet" method="POST" onsubmit="return validarCadastro()">
+  <form class="form-signin" action="Cadastro" method="POST" onsubmit="return validarCadastro()">
     <img class="mb-4" src="img/logo_fineduca.png" alt="logo fineduca" width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal">Cadastro</h1>
 
@@ -201,95 +204,4 @@ ul{
 
 </body>
 
-<script>
-function senhaValida(p) {
-    var letrasMaiusculas = /[A-Z]/;
-    var letrasMinusculas = /[a-z]/;
-    var numeros = /[0-9]/;
-    var caracteresEspeciais = /[!@#$%^&*()\-_=+{};:,<.>]/; // Corrigido
-
-    // Verifica o comprimento mínimo
-    if (p.length < 8) {
-        return false;
-    }
-
-    // Contadores
-    var auxMaiuscula = 0;
-    var auxMinuscula = 0;
-    var auxNumero = 0;
-    var auxEspecial = 0;
-    
-
-    for (var i = 0; i < p.length; i++) {
-        if (letrasMaiusculas.test(p[i])) auxMaiuscula++;
-        else if (letrasMinusculas.test(p[i])) auxMinuscula++;
-        else if (numeros.test(p[i])) auxNumero++;
-        else if (caracteresEspeciais.test(p[i])) auxEspecial++;
-    }
-
-    // Retorna verdadeiro se a senha atender a todos os critérios
-    return auxMaiuscula > 0 && auxMinuscula > 0 && auxNumero > 0 && auxEspecial > 0;
-}
-
-function validarSenha() {
-    var senha = document.getElementById("senha").value;
-    var confirmarSenha = document.getElementById("confirmar_senha").value;
-
-    if (senhaValida(senha)) {
-        if (senha === confirmarSenha) {
-            return true;
-        } else {
-            alert("As senhas não coincidem!");
-            return false;
-        }
-    } else {
-        alert("Senha fraca! A senha deve conter pelo menos 8 caracteres, incluindo letra maiúscula, minúscula, número e caractere especial.");
-        return false;
-    }
-}
-</script>
-
-
-<script>
-  function validarCadastro() {
-      var termos = document.getElementById("termos");
-  
-      if (senha !== confirmarSenha) {
-          alert("As senhas não coincidem!");
-          return false;
-      }
-  
-      if (!termos.checked) {
-          alert("Você deve aceitar os termos de política e privacidade para continuar.");
-          return false;
-      }
-  
-      return true;
-  }
-  </script>
-<script>
-  function mostrarTermos(event) {
-    event.preventDefault(); // evita o comportamento padrão do link
-    const card = document.getElementById("card-termos");
-    card.style.display = (card.style.display === "none" || card.style.display === "") ? "block" : "none";
-  }
-  
-  function validarCadastro() {
-    var senha = document.getElementById("senha").value;
-    var confirmarSenha = document.getElementById("confirmar_senha").value;
-    var termos = document.getElementById("termos");
-  
-    if (senha !== confirmarSenha) {
-      alert("As senhas não coincidem!");
-      return false;
-    }
-  
-    if (!termos.checked) {
-      alert("Você deve aceitar os termos de política e privacidade para continuar.");
-      return false;
-    }
-  
-    return true;
-  }
-  </script>
 </html>

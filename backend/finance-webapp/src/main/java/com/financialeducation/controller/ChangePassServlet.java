@@ -8,9 +8,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import com.financialeducation.model.UsuarioDAO;
 
-@WebServlet("/ChangePassServlet")
+@WebServlet("/Redefinir-Senha")
 public class ChangePassServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("resetsenha.html").forward(request, response);
+    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("nome");

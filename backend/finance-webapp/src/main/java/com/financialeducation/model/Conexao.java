@@ -4,12 +4,17 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 public class Conexao {
-	
-	//credenciais de conexão com o banco cloud
-    private static final String URL = "jdbc:postgresql://34.95.165.153:5432/postgres";
+    private static final Dotenv dotenv = Dotenv.load();
+    private static final String URL = dotenv.get("URL");
+    private static final String USER = dotenv.get("USER");
+    private static final String PASSWORD = dotenv.get("PASSWORD");
+
+/*    private static final String URL = "jdbc:postgresql://34.95.165.153:5432/postgres";
     private static final String USER = "postgres";
-    private static final String PASSWORD = "meu_banco_de_dados_na_nuvem";
+    private static final String PASSWORD = "minhasenha";*/
     
     public static Connection getConnection() throws SQLException {
         try {

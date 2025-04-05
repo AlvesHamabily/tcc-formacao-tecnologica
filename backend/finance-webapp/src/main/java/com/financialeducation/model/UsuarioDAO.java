@@ -7,8 +7,12 @@ import java.sql.SQLException;
 import com.financialeducation.model.Conexao;
 import com.financialeducation.model.UsuarioBean;
 import org.mindrot.jbcrypt.BCrypt;
+import io.github.cdimascio.dotenv.Dotenv;
+
 
 public class UsuarioDAO {
+    private static final Dotenv dotenv = Dotenv.load();
+
 	 public boolean usuarioExiste(String username, String email) {
 	        try (Connection con = Conexao.getConnection()) {
 	            PreparedStatement ps = con.prepareStatement("SELECT * FROM users WHERE username=? OR email=?");
@@ -30,6 +34,7 @@ public class UsuarioDAO {
 	            PreparedStatement ps = con.prepareStatement("INSERT INTO users (username, password, email) VALUES (?, ?, ?)");
 	            ps.setString(1, usuario.getUsername());
 	            ps.setString(2, BCrypt.hashpw(usuario.getPasswordHash(), BCrypt.gensalt(12)));
+//	            ps.setString(2, BCrypt.hashpw(usuario.getPasswordHash(), BCrypt.gensalt(dotenv.get("SALT"))));
 	            ps.setString(3, usuario.getEmail());
 	            ps.executeUpdate();
 	            return true;
@@ -64,6 +69,7 @@ public class UsuarioDAO {
         try (Connection con = Conexao.getConnection()) {
             PreparedStatement ps = con.prepareStatement("UPDATE users SET password=? WHERE username=? AND email=?");
             ps.setString(1, BCrypt.hashpw(novaSenha, BCrypt.gensalt(12)));
+//            ps.setString(1, BCrypt.hashpw(novaSenha, BCrypt.gensalt(dotenv.get("SALT"))));
             ps.setString(2, username);
             ps.setString(3, email);
             return ps.executeUpdate() > 0;

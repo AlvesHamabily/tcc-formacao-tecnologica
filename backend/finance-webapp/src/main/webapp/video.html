@@ -1,5 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+  <!-- Importa a API do YouTube -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+  
+  <script>
+  if (typeof YT === "undefined") {
+    console.error("API do YouTube não carregada.");
+  } else {
+    console.log("API do YouTube carregada.");
+  }
+</script>
+
+<script src="js/videos.js"></script>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,19 +71,8 @@
                   Aula 01 <span class="sr-only">(current)</span>
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#seus_resultados">
-                  <span data-feather="file"></span>
-                  Aula 02
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#pesquisa">
-                  <span data-feather="file"></span>
-                  Aula 03
-                </a>
-              </li>
             </ul>
+            <ul id="videoList"></ul>
 
           </div>
         </nav>
@@ -86,11 +88,16 @@
         <div class="video-section">
             <h2 id="videoTitle">Nenhum vídeo disponível</h2>
             <div class="video-container">
-                <iframe id="videoFrame" width="800" height="450" src="" frameborder="0" allowfullscreen></iframe>
+        		<div id="videoFrame" style="width:800px; height:450px;"></div>
             </div>
             <div class="controls">
                 <button onclick="navigate('prev')">Retornar</button>
                 <button onclick="navigate('next')">Avançar</button>
+                
+				<form action="PontosServlet" method="post" id="formPontos" onsubmit="return navigate('next')">
+				  <button type="submit">Avançar</button>
+				</form>
+				
             </div>
         </div>
         
@@ -98,6 +105,6 @@
 	        </div>
    
 			</div>
-    <script src="js/videos.js"></script>
+
 </body>
 </html>

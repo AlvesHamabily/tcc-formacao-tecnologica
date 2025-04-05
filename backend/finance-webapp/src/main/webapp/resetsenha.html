@@ -104,23 +104,24 @@
     <a class="btn btn-outline-primary" href="cadastro.html">Cadastre-se</a>
   </div>
 
+    <form action="ChangePassServlet" method="POST">
+    	<img class="mb-4" src="img/logo_fineduca.png" alt="logo fineduca" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Redefinir senha</h1>
+        <label for="nome" class="sr-only">Nome de Usuário</label>
+        <input type="text" id="nome" class="form-control" name="nome" placeholder="Digite seu nome de usuário" required>
 
-    <form class="form-signin" action="LoginServlet" method="post">
-      <img class="mb-4" src="img/logo_fineduca.png" alt="logo fineduca" width="72" height="72">
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-      <label for="inputEmail" class="sr-only">Email address</label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-      </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button><br> 
-      <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se</a>!</p>
-      <p class="mt-5 mb-3 text-muted">&copy; FinEducda 2025</p>
+        <label for="oldpass" class="sr-only">Senha Atual</label>
+        <input type="password" id="oldpass" class="form-control" name="oldpass" placeholder="Digite sua senha atual" required>
+
+        <label for="password" class="sr-only">Nova Senha</label>
+        <input type="password" id="password" class="form-control" name="password" placeholder="Digite sua nova senha" required>
+
+        <label for="email" class="sr-only">E-mail</label>
+        <input type="email" id="email" class="form-control" name="email" placeholder="Digite seu e-mail" required>
+
+        <button type="submit">Alterar Senha</button>
+        <p>Não tem uma conta? <a href="login.html">Login</a>!</p>
+        <p class="mt-5 mb-3 text-muted">&copy; FinEducda 2025</p>
     </form>
-    
   </body>
 </html>

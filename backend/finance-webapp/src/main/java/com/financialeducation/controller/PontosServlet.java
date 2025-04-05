@@ -10,14 +10,18 @@ import jakarta.servlet.http.HttpSession;
 import com.financialeducation.model.UsuarioDAO;
 import com.financialeducation.model.UsuarioBean;
 
-@WebServlet("/PontosServlet")
+@WebServlet("/Perfil")
 public class PontosServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("perfil.html").forward(request, response);
+    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("username") == null) {
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("video.html");
             return;
         }
         
