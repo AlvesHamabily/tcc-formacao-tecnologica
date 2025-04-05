@@ -91,10 +91,8 @@
         		<div id="videoFrame" style="width:800px; height:450px;"></div>
             </div>
             <div class="controls">
-                <button onclick="navigate('prev')">Retornar</button>                
-				<form action="PontosServlet" method="post" id="formPontos" onsubmit="return navigate('next')">
-				  <button type="submit">Avançar</button>
-				</form>
+                <button id="prevButton" onclick="navigate('prev')">Retornar</button>                
+				<button id="nextButton" onclick="navigate('next')">Avançar</button>
 				
             </div>
         </div>
