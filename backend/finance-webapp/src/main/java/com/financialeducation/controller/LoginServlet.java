@@ -11,7 +11,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import com.financialeducation.model.UsuarioDAO;
 import com.financialeducation.model.UsuarioBean;
 
-@WebServlet("/Login")
+@WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -20,7 +20,9 @@ public class LoginServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email = request.getParameter("email");
+        System.out.println("LoginServlet acionado!");
+
+    	String email = request.getParameter("email");
         String password = request.getParameter("password");
         
         UsuarioDAO usuarioDAO = new UsuarioDAO();
@@ -32,7 +34,11 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("username", usuario.getUsername());
             response.sendRedirect("video.html");
         } else {
-            response.sendRedirect("login.html?error=1");
+            response.sendRedirect("login.html?error=3");
+            System.out.println(password);
+            System.out.println(BCrypt.hashpw(password, BCrypt.gensalt(12)));
+            System.out.println(usuario.getPasswordHash());
+            System.out.println(BCrypt.checkpw(password, usuario.getPasswordHash()));
         }
     }
 }

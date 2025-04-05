@@ -6,6 +6,7 @@ public class UsuarioBean {
     private String nivel;
     private String email;
     private String passwordHash;
+    private String password;
     private boolean professor;
 
     public UsuarioBean(String username, int pontos, String email, String passwordHash) {
@@ -28,7 +29,7 @@ public class UsuarioBean {
     public UsuarioBean(String username, String email, String password) {
         this.username = username;
         this.email = email;
-        this.passwordHash = password;
+        this.password = password;
         this.pontos = 0; // Inicia com 0 pontos
         this.nivel = calcularNivel(this.pontos); // Define nível inicial
         this.professor = false; // Por padrão, não é professor
@@ -54,6 +55,10 @@ public class UsuarioBean {
     
     public String getPasswordHash() {
         return passwordHash;
+    }
+    
+    public String getPassword() {
+    	return password;
     }
     
     public String getEmail() {

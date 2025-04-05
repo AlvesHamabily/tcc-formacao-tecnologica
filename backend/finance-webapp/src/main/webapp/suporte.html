@@ -183,8 +183,7 @@
               headers: { 'Accept': 'application/vnd.github.v3.raw' }
             });
             const markdown = await response.text();
-        
-            // Converter markdown para HTML (usando marked.js)
+      
             document.getElementById('readme-content').innerHTML = marked.parse(markdown);
           } catch (error) {
             console.error("Erro ao carregar README:", error);

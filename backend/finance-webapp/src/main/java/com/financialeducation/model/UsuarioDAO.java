@@ -33,8 +33,7 @@ public class UsuarioDAO {
 	        try (Connection con = Conexao.getConnection()) {
 	            PreparedStatement ps = con.prepareStatement("INSERT INTO users (username, password, email) VALUES (?, ?, ?)");
 	            ps.setString(1, usuario.getUsername());
-	            ps.setString(2, BCrypt.hashpw(usuario.getPasswordHash(), BCrypt.gensalt(12)));
-//	            ps.setString(2, BCrypt.hashpw(usuario.getPasswordHash(), BCrypt.gensalt(dotenv.get("SALT"))));
+	            ps.setString(2, BCrypt.hashpw(usuario.getPassword(), BCrypt.gensalt(12)));
 	            ps.setString(3, usuario.getEmail());
 	            ps.executeUpdate();
 	            return true;
@@ -44,32 +43,41 @@ public class UsuarioDAO {
 	        return false;
 	    }
 	
-	public UsuarioBean buscarUsuarioPorEmail(String email) {
-        try (Connection con = Conexao.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM users WHERE email=?");
-            ps.setString(1, email);
-            ResultSet rs = ps.executeQuery();
-            
-            if (rs.next()) {
-                return new UsuarioBean(
-               		rs.getString("username"),
-               		rs.getInt("points"),
-               		rs.getString("email"),
-                    rs.getString("password"),
-                    rs.getBoolean("professor")
-                );
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+	    public UsuarioBean buscarUsuarioPorEmail(String email) {
+	        System.out.println("Buscando usuário com email: " + email);
+
+	        try (Connection con = Conexao.getConnection()) {
+	            System.out.println("Conexão obtida com sucesso!");
+
+	            PreparedStatement ps = con.prepareStatement("SELECT * FROM users WHERE email=?");
+	            ps.setString(1, email);
+	            ResultSet rs = ps.executeQuery();
+
+	            if (rs.next()) {
+	                System.out.println("Usuário encontrado no banco.");
+	                return new UsuarioBean(
+	                    rs.getString("username"),
+	                    rs.getInt("points"),
+	                    rs.getString("email"),
+	                    rs.getString("password"),
+	                    rs.getBoolean("professor")
+	                );
+	            } else {
+	                System.out.println("Usuário não encontrado.");
+	            }
+	        } catch (Exception e) {
+	            System.out.println("Erro ao buscar usuário:");
+	            e.printStackTrace();
+	        }
+
+	        return null;
+	    }
+
 	
     public boolean alterarSenha(String username, String email, String novaSenha) {
         try (Connection con = Conexao.getConnection()) {
             PreparedStatement ps = con.prepareStatement("UPDATE users SET password=? WHERE username=? AND email=?");
             ps.setString(1, BCrypt.hashpw(novaSenha, BCrypt.gensalt(12)));
-//            ps.setString(1, BCrypt.hashpw(novaSenha, BCrypt.gensalt(dotenv.get("SALT"))));
             ps.setString(2, username);
             ps.setString(3, email);
             return ps.executeUpdate() > 0;
