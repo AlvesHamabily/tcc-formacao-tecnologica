@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import com.financialeducation.model.UsuarioDAO;
 import com.financialeducation.model.UsuarioBean;
 
-@WebServlet("/Cadastro")
+@WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     

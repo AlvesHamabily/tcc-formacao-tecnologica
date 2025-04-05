@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import com.financialeducation.model.UsuarioDAO;
 
-@WebServlet("/Redefinir-Senha")
+@WebServlet("/ChangePassServlet")
 public class ChangePassServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     

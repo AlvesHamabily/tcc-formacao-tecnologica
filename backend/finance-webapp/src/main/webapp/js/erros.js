@@ -18,11 +18,11 @@ window.addEventListener("DOMContentLoaded", () => {
 	});
   }
 
-  if (params.get("error") === "") {
+  if (params.get("error") === "3") {
   Swal.fire({
-    icon: '',
-    title: '',
-    text: ''
+    icon: 'error',
+    title: 'Oops...',
+    text: 'Autenticação falhou'
   });
   }
 });

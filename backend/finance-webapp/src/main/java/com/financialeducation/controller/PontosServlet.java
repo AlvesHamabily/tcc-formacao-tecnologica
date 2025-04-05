@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpSession;
 import com.financialeducation.model.UsuarioDAO;
 import com.financialeducation.model.UsuarioBean;
 
-@WebServlet("/Perfil")
+@WebServlet("/PontosServlet")
 public class PontosServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     
