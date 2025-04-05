@@ -25,7 +25,7 @@ O objetivo é oferecer uma plataforma educacional com cadastro de usuários, aut
 | Frontend      | HTML5, CSS3, Bootstrap |
 | Backend       | Java (Servlets, JSP) |
 | Banco de Dados| PostgreSQL + JDBC    |
-| Ferramentas   | Apache Tomcat, Eclipse, pgAdmin, GitHub |
+| Ferramentas   | Apache Tomcat, Eclipse, pgAdmin, GitHub, CloudFlare|
 
 ---
 
